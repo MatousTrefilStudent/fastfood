@@ -1,3 +1,5 @@
+import os
+
 from modules.taskmanager import TaskManager
 from modules.task import PLATNE_STAVY
 
@@ -18,6 +20,14 @@ POPIS_STAVU = {
     "pripravuje_se": "Připravuje se",
     "vydana":        "Vydána",
 }
+
+
+def vycisti_terminal():
+    """Vyčistí terminál podle použitého operačního systému."""
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
 
 
 def vypis_objednavky(objednavky):

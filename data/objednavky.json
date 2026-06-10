@@ -3,6 +3,12 @@
         "task_id": 1,
         "nazev": "Burger",
         "cena": 454.0,
+        "stav": "vydana"
+    },
+    {
+        "task_id": 2,
+        "nazev": "burger",
+        "cena": 45.0,
         "stav": "prijata"
     }
 ]

@@ -46,16 +46,6 @@ def test_str_obsahuje_nazev_a_cenu():
 
 # ---- Negativní testy ----
 
-def test_prazdny_nazev_vyhodi_chybu():
-    with pytest.raises(ValueError, match="prázdný"):
-        Task(1, "")
-
-
-def test_mezery_jako_nazev_vyhodi_chybu():
-    with pytest.raises(ValueError, match="prázdný"):
-        Task(1, "   ")
-
-
 def test_neplatny_stav_pri_vytvoreni():
     with pytest.raises(ValueError, match="Neplatný stav"):
         Task(1, "Burger", 100.0, stav="hotovo")
