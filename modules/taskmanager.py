@@ -54,9 +54,20 @@ class TaskManager:
     def nacti_z_json(self, cesta: str = VYCHOZI_SOUBOR) -> None:
         if not os.path.exists(cesta):
             raise FileNotFoundError(f"Soubor nenalezen: {cesta}")
+        
         with open(cesta, "r", encoding="utf-8") as f:
-            data = json.load(f)
+            try:
+                data = json.load(f)
+            except json.JSONDecodeError:
+                # Soubor je poškozený nebo prázdný, inicializujeme prázdný seznam
+                data = []
+        
+        # Ošetření případu, kdy je soubor sice platný JSON, ale obsahuje null místo seznamu
+        if data is None:
+            data = []
+            
         self._objednavky = [Task.from_dict(d) for d in data]
+        
         if self._objednavky:
             self._dalsi_id = max(o.task_id for o in self._objednavky) + 1
         else:
