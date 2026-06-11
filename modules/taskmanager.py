@@ -10,18 +10,14 @@ class TaskManager:
         self._objednavky: list[Task] = []
         self._dalsi_id: int = 1
 
-    # ------------------------------------------------------------------ #
-    # Pomocná metoda – hledání podle ID
-    # ------------------------------------------------------------------ #
+
     def _najdi(self, task_id: int) -> Task:
         for objednavka in self._objednavky:
             if objednavka.task_id == task_id:
                 return objednavka
         raise KeyError(f"Objednávka s ID {task_id} neexistuje.")
 
-    # ------------------------------------------------------------------ #
-    # Základní operace
-    # ------------------------------------------------------------------ #
+
     def pridej_objednavku(self, nazev: str, cena: float) -> Task:
         objednavka = Task(self._dalsi_id, nazev, cena)
         self._objednavky.append(objednavka)
@@ -43,9 +39,6 @@ class TaskManager:
         # Počítáme pouze vydané objednávky
         return sum(o.cena for o in self._objednavky if o.stav == "vydana")
 
-    # ------------------------------------------------------------------ #
-    # Ukládání a načítání
-    # ------------------------------------------------------------------ #
     def uloz_do_json(self, cesta: str = VYCHOZI_SOUBOR) -> None:
         os.makedirs(os.path.dirname(cesta), exist_ok=True)
         with open(cesta, "w", encoding="utf-8") as f:
@@ -59,10 +52,9 @@ class TaskManager:
             try:
                 data = json.load(f)
             except json.JSONDecodeError:
-                # Soubor je poškozený nebo prázdný, inicializujeme prázdný seznam
+
                 data = []
-        
-        # Ošetření případu, kdy je soubor sice platný JSON, ale obsahuje null místo seznamu
+
         if data is None:
             data = []
             

@@ -88,7 +88,7 @@ def zmenit_stav():
 
     try:
         spravce.zmen_stav_objednavky(task_id, novy_stav)
-        print("  ✓ Stav změněn.")
+        print("  Stav změněn.")
     except (KeyError, ValueError) as e:
         print(f"  Chyba: {e}")
 
