@@ -5,6 +5,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from modules.task import Task
 
+"""Generované github copilotem"""
 
 def test_vytvoreni_objednavky():
     o = Task(1, "Burger", 150.0)

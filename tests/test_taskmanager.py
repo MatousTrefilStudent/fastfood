@@ -5,6 +5,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from modules.taskmanager import TaskManager
 
+"""Generované github copilotem"""
 
 @pytest.fixture
 def spravce():

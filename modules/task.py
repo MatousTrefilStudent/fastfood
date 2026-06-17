@@ -39,9 +39,9 @@ class Task:
 
     def __str__(self) -> str:
         stavy_popis = {
-            "prijata":       "📥 Přijata",
-            "pripravuje_se": "🍳 Připravuje se",
-            "vydana":        "✅ Vydána",
+            "prijata":       "Přijata",
+            "pripravuje_se": "Připravuje se",
+            "vydana":        "Vydána",
         }
         popis_stavu = stavy_popis.get(self.stav, self.stav)
         return (
